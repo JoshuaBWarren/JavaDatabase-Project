@@ -68,7 +68,7 @@ public class LoginController implements Initializable {
 			// check login information
 			if(this.loginModel.isLogin(this.username.getText(), this.password.getText(), ((option)this.combobox.getValue()).toString())) {
 				
-				Stage stage = (Stage)this.loginButton.getScene().getWindow();
+				Stage stage = (Stage) this.loginButton.getScene().getWindow();
 				stage.close();
 				
 				switch(((option) this.combobox.getValue()).toString()) 
@@ -82,7 +82,7 @@ public class LoginController implements Initializable {
 				} 
 			}
 			else {
-				this.loginStatus.setText("Wrong!");
+				this.loginStatus.setText("Wrong credentials");
 			}	
 			
 		} catch(Exception localException) {

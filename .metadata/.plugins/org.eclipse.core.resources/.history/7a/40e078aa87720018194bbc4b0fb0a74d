@@ -82,7 +82,7 @@ public class LoginController implements Initializable {
 				} 
 			}
 			else {
-				this.loginStatus.setText("Wrong!");
+				this.loginStatus.setText("Wrong credentials");
 			}	
 			
 		} catch(Exception localException) {
