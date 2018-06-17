@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/*
+ * This class will connect to my database
+ */
 public class dbConnection {
 
 	// you'll need these for MYSQL
@@ -12,7 +15,7 @@ public class dbConnection {
 	//private static final String CONN = "jbdc:mysql://localhost/login";
 	
 	// this is all we need for SQLITE
-	private static final String SQCONN = "jdbc:sqlite:school.sqlite";
+	private static final String SQCONN = "jdbc:sqlite:schoolsystem.sqlite";
 	
 	/*
 	 * This is the class that will help with the

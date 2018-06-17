@@ -17,9 +17,12 @@ public class LoginModel {
 		try {
 			this.connection = dbConnection.getConnection();
 		} catch (SQLException ex) {
+			
 			ex.printStackTrace();
 		}
+		
 		if(this.connection == null) {
+			
 			System.exit(1);
 		}
 	}
@@ -30,7 +33,7 @@ public class LoginModel {
 	}
 	
 	// check login
-	public boolean isLogin(String user, String password, String opt) throws Exception {
+	public boolean isLogin(String user, String pass, String opt) throws Exception {
 		
 		PreparedStatement pr = null;
 		ResultSet rs = null;
@@ -43,7 +46,7 @@ public class LoginModel {
 			//check from the database username/password
 			pr = this.connection.prepareStatement(sql);
 			pr.setString(1, user);
-			pr.setString(2, password);
+			pr.setString(2, pass);
 			pr.setString(3, opt);
 			
 			rs = pr.executeQuery();
@@ -52,22 +55,18 @@ public class LoginModel {
 			
 			if(rs.next()) {
 				return true;
-			} else {
-				return false;
 			}
+			return false;
 			
-			} catch (SQLException ex){
+			} 
+		catch (SQLException ex){
 				return false;
 			}
-		
 		// need to close the connection
 		finally {
 			pr.close();
 			rs.close();
-		}
 	}
-	
-	
-	
-	
+
+	}
 }
