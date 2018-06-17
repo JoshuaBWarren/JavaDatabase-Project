@@ -1,5 +1,31 @@
 package loginapp;
 
-public class LoginApp {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+/*
+ * Main class of the project
+ */
+public class LoginApp extends Application {
+
+	public void start(Stage stage) throws Exception{
+		
+		// the root node
+		Parent root = (Parent) FXMLLoader.load(getClass().getResource("login.fxml"));
+		
+		// scene object
+		Scene scene = new Scene(root);
+		
+		// set the scene for stage
+		stage.setScene(scene);
+		stage.setTitle("School Management System");
+		stage.show();
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
 }

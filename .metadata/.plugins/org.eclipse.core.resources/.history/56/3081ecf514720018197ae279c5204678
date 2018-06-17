@@ -1,0 +1,12 @@
+package dbUtil;
+
+public class dbConnection {
+
+	// you'll need these for MYSQL
+	//private static final String USERNAME = "dbuser";
+	//private static final String PASSWORD = "dbpassword";
+	//private static final String CONN = "jbdc:mysql://localhost/login";
+	
+	// this is all we need for SQLITE
+	private static final String SQCONN = "jdbc:sqlite:school.sqlite";
+}

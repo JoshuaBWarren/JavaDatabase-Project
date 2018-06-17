@@ -1,0 +1,31 @@
+package loginapp;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import dbUtil.dbConnection;
+
+public class LoginModel {
+
+	Connection connection;
+	
+	public LoginModel() {
+		
+		//check if we're connected
+		try {
+			this.connection = dbConnection.getConnection();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		if(this.connection == null) {
+			System.exit(1);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,40 @@
+package loginapp;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import dbUtil.dbConnection;
+
+public class LoginModel {
+
+	Connection connection;
+	
+	public LoginModel() {
+		
+		//check if we're connected
+		try {
+			this.connection = dbConnection.getConnection();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		if(this.connection == null) {
+			System.exit(1);
+		}
+	}
+	
+	//is db connected
+	public boolean isDatabaseConnected() {
+		return this.connection != null;
+	}
+	
+	// check login
+	public boolean isLogin(String user, String password, String opt) throws Exception {
+		
+		PreparedStatement pr = null;
+	}
+	
+	
+	
+	
+}
