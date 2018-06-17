@@ -29,7 +29,6 @@ public class LoginController implements Initializable {
 	@FXML
 	private Button loginButton;
 	
-	// initialize connection to database
 	public void initialize(URL url, ResourceBundle rb) {
 		
 		// check if we're connected
@@ -43,7 +42,7 @@ public class LoginController implements Initializable {
 			this.dbstatus.setText("Not Connected");
 		}
 		
-		// back to our enum options
+		// back to our enum
 		this.combobox.setItems(FXCollections.observableArrayList(option.values()));
 		
 	}

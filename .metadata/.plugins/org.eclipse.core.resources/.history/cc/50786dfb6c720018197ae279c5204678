@@ -3,7 +3,6 @@ package loginapp;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,22 +28,8 @@ public class LoginController implements Initializable {
 	@FXML
 	private Button loginButton;
 	
-	// initialize connection to database
 	public void initialize(URL url, ResourceBundle rb) {
 		
-		// check if we're connected
-		if(this.loginModel.isDatabaseConnected()) {
-			
-			// if so, display "Connected"
-			this.dbstatus.setText("Connected");
-		} else {
-			
-			// if not, then display not connected
-			this.dbstatus.setText("Not Connected");
-		}
-		
-		// back to our enum options
-		this.combobox.setItems(FXCollections.observableArrayList(option.values()));
 		
 	}
 
