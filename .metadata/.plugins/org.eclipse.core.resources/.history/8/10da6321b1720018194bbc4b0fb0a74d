@@ -122,7 +122,8 @@ public class AdminController implements Initializable {
 			stmt.setString(4, this.email.getText());
 			stmt.setString(5, this.dob.getEditor().getText());
 			
-			stmt.execute();
+			// execute the query
+			stmt.executeQuery();
 			conn.close();
 			
 		} catch(SQLException ex) {

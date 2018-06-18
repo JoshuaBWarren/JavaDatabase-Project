@@ -64,7 +64,7 @@ public class StudentData {
 	}
 
 	
-	public StringProperty IDProperty() {
+	public StringProperty idProperty() {
 		return ID;
 	}
 	
@@ -77,7 +77,7 @@ public class StudentData {
 	public StringProperty emailProperty() {
 		return email;
 	}
-	public StringProperty DOBProperty() {
+	public StringProperty dobProperty() {
 		return DOB;
 	}
 

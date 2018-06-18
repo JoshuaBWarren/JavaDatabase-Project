@@ -43,8 +43,8 @@ public class StudentData {
 		return DOB;
 	}
 
-	public void setID(StringProperty ID) {
-		this.ID = ID;
+	public void setID(StringProperty iD) {
+		ID = iD;
 	}
 
 	public void setFirstName(StringProperty firstName) {
@@ -59,28 +59,31 @@ public class StudentData {
 		this.email = email;
 	}
 
-	public void setDOB(StringProperty DOB) {
-		this.DOB = DOB;
+	public void setDOB(StringProperty dOB) {
+		DOB = dOB;
 	}
-
 	
-	public StringProperty IDProperty() {
-		return ID;
+	
+	
+	public StringProperty idProperty() {
+		return this.ID;
 	}
 	
 	public StringProperty firstNameProperty() {
-		return firstName;
+		return this.firstName;
 	}
+	
 	public StringProperty lastNameProperty() {
-		return lastName;
+		return this.lastName;
 	}
+	
 	public StringProperty emailProperty() {
-		return email;
+		return this.email;
 	}
-	public StringProperty DOBProperty() {
-		return DOB;
+	
+	public StringProperty dobProperty() {
+		return this.DOB;
 	}
-
 	
 	
 	
