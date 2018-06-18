@@ -133,9 +133,6 @@ public class AdminController implements Initializable {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		
-		loadStudentData(event);
-		clearFields(event);
 
 	}
 	

@@ -133,9 +133,6 @@ public class AdminController implements Initializable {
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		
-		loadStudentData(event);
-		clearFields(event);
 
 	}
 	
@@ -155,10 +152,7 @@ public class AdminController implements Initializable {
 		// sql query to delete data from the database
 		String sqlRemove = "DELETE FROM students WHERE id = ?";
 		
-		// null pointer exception error?  the fuck?
-		//String valueToDelete = bt.getOnMouseClicked(id).toString();
-		
-		System.out.println(valueToDelete);
+		System.out.println(this.id.getText());
 		try {
 			
 			
@@ -167,7 +161,7 @@ public class AdminController implements Initializable {
 			
 			System.out.println("holy fu ck shit");
 			
-			//delete
+			//delete.
 			delete.execute();
 			conn.close();
 			

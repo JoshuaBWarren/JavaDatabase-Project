@@ -135,7 +135,6 @@ public class AdminController implements Initializable {
 		}
 		
 		loadStudentData(event);
-		clearFields(event);
 
 	}
 	
