@@ -156,7 +156,6 @@ public class AdminController implements Initializable {
 			
 			System.out.println("holy fu ck shit");
 			
-			//delete.
 			delete.execute();
 			conn.close();
 			

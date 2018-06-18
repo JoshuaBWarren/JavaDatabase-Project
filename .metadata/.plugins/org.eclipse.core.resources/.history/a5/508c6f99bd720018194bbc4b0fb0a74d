@@ -145,18 +145,21 @@ public class AdminController implements Initializable {
 	private void removeStudent(ActionEvent event) {
 		
 		// sql query to delete data from the database
-		String sqlRemove = "DELETE FROM students WHERE id = ?";
+		String sqlRemove = "DELETE FROM students WHERE id = " + this.id.getText();
 		
-		System.out.println(this.id.getText());
+		
 		try {
-			
-			
+			System.out.println(this.id.getText());
 			Connection conn = dbConnection.getConnection();
 			PreparedStatement delete = conn.prepareStatement(sqlRemove);
 			
+			
+		
+			
+			
+			
 			System.out.println("holy fu ck shit");
 			
-			//delete.
 			delete.execute();
 			conn.close();
 			

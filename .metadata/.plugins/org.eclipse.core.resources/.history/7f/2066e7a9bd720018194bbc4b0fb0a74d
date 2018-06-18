@@ -154,9 +154,13 @@ public class AdminController implements Initializable {
 			Connection conn = dbConnection.getConnection();
 			PreparedStatement delete = conn.prepareStatement(sqlRemove);
 			
+			
+		
+			
+			
+			
 			System.out.println("holy fu ck shit");
 			
-			//delete.
 			delete.execute();
 			conn.close();
 			

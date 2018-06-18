@@ -145,7 +145,7 @@ public class AdminController implements Initializable {
 	private void removeStudent(ActionEvent event) {
 		
 		// sql query to delete data from the database
-		String sqlRemove = "DELETE FROM students WHERE id = ?";
+		String sqlRemove = "DELETE FROM students(id) WHERE id = ?";
 		
 		System.out.println(this.id.getText());
 		try {
@@ -156,7 +156,7 @@ public class AdminController implements Initializable {
 			
 			System.out.println("holy fu ck shit");
 			
-			//delete.
+			delete.setString(1, "");
 			delete.execute();
 			conn.close();
 			
