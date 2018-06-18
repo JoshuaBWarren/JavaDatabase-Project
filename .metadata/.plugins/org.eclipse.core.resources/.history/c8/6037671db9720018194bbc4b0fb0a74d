@@ -150,9 +150,10 @@ public class AdminController implements Initializable {
 			Connection conn = dbConnection.getConnection();
 			PreparedStatement delete = conn.prepareStatement(sqlRemove);
 			
-			delete.setString(1, this.id.getText());
+			delete.setString(0, "");
+
 			
-			delete.execute();
+			delete.executeUpdate();
 			conn.close();
 			
 		} catch (SQLException ex) {

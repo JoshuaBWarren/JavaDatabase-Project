@@ -143,21 +143,6 @@ public class AdminController implements Initializable {
 	
 	@FXML
 	private void removeStudent(ActionEvent event) {
-		
-		String sqlRemove = "DELETE FROM students WHERE id = ?";
-		
-		try {
-			Connection conn = dbConnection.getConnection();
-			PreparedStatement delete = conn.prepareStatement(sqlRemove);
-			
-			delete.setString(1, this.id.getText());
-			
-			delete.execute();
-			conn.close();
-			
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		
+		this.id.deleteText(null);
 	}
 }
