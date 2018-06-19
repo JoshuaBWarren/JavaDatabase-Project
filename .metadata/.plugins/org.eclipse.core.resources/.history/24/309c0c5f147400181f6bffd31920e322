@@ -1,0 +1,11 @@
+package students;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+/*
+ * Class representing a Schedule
+ */
+public class ScheduleData {
+
+}

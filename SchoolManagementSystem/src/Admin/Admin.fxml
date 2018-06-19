@@ -17,26 +17,26 @@
    <children>
       <TabPane layoutX="-1.0" prefHeight="720.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Students">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Tab text="Students">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <HBox layoutX="422.0" layoutY="-2.0" prefHeight="693.0" prefWidth="857.0">
                            <children>
                               <TableView fx:id="studenttable" prefHeight="603.0" prefWidth="858.0">
-                                <columns>
-                                  <TableColumn fx:id="idcolumn" prefWidth="38.0" text="ID" />
-                                    <TableColumn fx:id="firstnamecolumn" minWidth="0.0" prefWidth="173.0" text="First Name" />
-                                    <TableColumn fx:id="lastnamecolumn" prefWidth="214.0" text="Last Name" />
-                                    <TableColumn fx:id="emailcolumn" prefWidth="325.0" text="Email" />
-                                    <TableColumn fx:id="dobcolumn" prefWidth="106.0" text="DOB" />
-                                </columns>
+                                 <columns>
+                                    <TableColumn fx:id="idcolumn" text="ID" />
+                                    <TableColumn fx:id="firstnamecolumn" minWidth="0.0" prefWidth="166.0" text="First name" />
+                                    <TableColumn fx:id="lastnamecolumn" prefWidth="153.0" text="Last name" />
+                                    <TableColumn fx:id="emailcolumn" maxWidth="517.0" minWidth="0.0" prefWidth="290.0" text="Email" />
+                                    <TableColumn fx:id="dobcolumn" maxWidth="294.0" prefWidth="168.0" text="Date of Birth" />
+                                 </columns>
                               </TableView>
                            </children>
                         </HBox>
-                        <VBox layoutX="-1.0" prefHeight="690.0" prefWidth="423.0">
+                        <VBox prefHeight="690.0" prefWidth="423.0">
                            <children>
-                              <Label prefHeight="29.0" prefWidth="422.0" text="Add Students">
+                              <Label prefHeight="29.0" prefWidth="422.0" text="Add Classes">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
@@ -59,32 +59,32 @@
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField fx:id="email" layoutX="10.0" layoutY="39.0" promptText="Email">
+                              <TextField fx:id="email" layoutX="40.0" layoutY="89.0" promptText="Email">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <DatePicker fx:id="dob" prefHeight="25.0" prefWidth="428.0">
+                              <DatePicker fx:id="dob" prefHeight="25.0" prefWidth="376.0">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" onAction="#addStudent" prefHeight="25.0" prefWidth="422.0" text="Add Student">
+                              <Button mnemonicParsing="false" onAction="#addClass" prefHeight="25.0" prefWidth="422.0" text="Add Student">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="40.0" layoutY="214.0" mnemonicParsing="false" onAction="#removeStudent" prefHeight="25.0" prefWidth="366.0" text="Delete Student">
+                              <Button layoutX="40.0" layoutY="214.0" mnemonicParsing="false" onAction="#removeClass" prefHeight="25.0" prefWidth="366.0" text="Delete Student">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="40.0" layoutY="164.0" mnemonicParsing="false" onAction="#clearStudentFields" prefHeight="25.0" prefWidth="366.0" text="Clear Form">
+                              <Button layoutX="40.0" layoutY="164.0" mnemonicParsing="false" onAction="#clearClassFields" prefHeight="25.0" prefWidth="366.0" text="Clear Form">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="25.0" layoutY="189.0" mnemonicParsing="false" onAction="#loadStudentData" prefHeight="25.0" prefWidth="366.0" text="Load Data">
+                              <Button layoutX="25.0" layoutY="189.0" mnemonicParsing="false" onAction="#loadClassData" prefHeight="25.0" prefWidth="366.0" text="Load Data">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
@@ -96,20 +96,20 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
+               </content>
+            </Tab>
             <Tab text="Classes">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <HBox layoutX="422.0" layoutY="-2.0" prefHeight="693.0" prefWidth="857.0">
                            <children>
-                              <TableView fx:id="classtable" prefHeight="603.0" prefWidth="858.0">
+                              <TableView fx:id="classtable1" prefHeight="603.0" prefWidth="858.0">
                                  <columns>
-                                    <TableColumn fx:id="classidcolumn" text="Class ID" />
-                                    <TableColumn fx:id="classnamecolumn" minWidth="0.0" prefWidth="491.0" text="Class Name" />
-                                    <TableColumn fx:id="semestercolumn" prefWidth="154.0" text="Semester" />
-                                    <TableColumn fx:id="yearcolumn" maxWidth="517.0" minWidth="0.0" prefWidth="132.0" text="Year" />
+                                    <TableColumn fx:id="classidcolumn1" text="Class ID" />
+                                    <TableColumn fx:id="classnamecolumn1" minWidth="0.0" prefWidth="491.0" text="Class Name" />
+                                    <TableColumn fx:id="semestercolumn1" prefWidth="154.0" text="Semester" />
+                                    <TableColumn fx:id="yearcolumn1" maxWidth="517.0" minWidth="0.0" prefWidth="132.0" text="Year" />
                                  </columns>
                               </TableView>
                            </children>
@@ -124,22 +124,22 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="classid" promptText="Class ID">
+                              <TextField fx:id="classid1" promptText="Class ID">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField fx:id="classname" layoutX="10.0" layoutY="39.0" promptText="Class Name">
+                              <TextField fx:id="classname1" layoutX="10.0" layoutY="39.0" promptText="Class Name">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField fx:id="semester" layoutX="10.0" layoutY="39.0" promptText="Semester">
+                              <TextField fx:id="semester1" layoutX="10.0" layoutY="39.0" promptText="Semester">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <TextField fx:id="year" layoutX="40.0" layoutY="89.0" promptText="Year">
+                              <TextField fx:id="year1" layoutX="40.0" layoutY="89.0" promptText="Year">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>

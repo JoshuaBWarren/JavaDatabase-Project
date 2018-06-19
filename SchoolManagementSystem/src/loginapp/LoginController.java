@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Admin.AdminController;
+import students.StudentsController;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
@@ -29,6 +30,9 @@ public class LoginController implements Initializable {
 	
 	// create instance of LoginModel
 	LoginModel loginModel = new LoginModel();
+	
+	AdminController admin = new AdminController();
+	StudentsController student = new StudentsController();
 
 	/*
 	 * A Label is a Label
@@ -158,10 +162,10 @@ public class LoginController implements Initializable {
 			userStage.setResizable(false);
 			userStage.show();
 			
-			
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+		this.student.loadScheduleData();
 	}
 	
 	/*

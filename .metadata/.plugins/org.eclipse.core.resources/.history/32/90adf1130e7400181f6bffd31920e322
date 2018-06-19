@@ -1,0 +1,57 @@
+package students;
+
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import dbUtil.dbConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import students.ClassData;
+import Admin.AdminController;
+
+/*
+ * Represents the class for StudentsController
+ */
+public class StudentsController  {
+
+	@FXML
+	private TextField scheduleid;
+	
+	@FXML
+	private TextField scheduleclassname;
+	
+	@FXML
+	private TextField schedulesemester;
+	
+	@FXML
+	private TextField scheduleyear;
+	
+	
+	@FXML
+	private TableView<ScheduleData> scheduletable;
+	
+	
+	@FXML
+	private TableColumn<ScheduleData, String> scheduleidcolumn;
+	
+	@FXML 
+	private TableColumn<ScheduleData, String> scheduleclassnamecolumn;
+	
+	@FXML
+	private TableColumn<ScheduleData, String> schedulesemestercolumn;
+	
+	@FXML
+	private TableColumn<ScheduleData, String> scheduleyearcolumn;
+	
+}

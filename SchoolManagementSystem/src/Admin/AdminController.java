@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -453,9 +452,7 @@ public class AdminController implements Initializable {
 	 */
 	@FXML
 	private void removeClass(ActionEvent event) {
-		
-		
-		
+
 		try {
 			
 			// sql query to delete data from the database
