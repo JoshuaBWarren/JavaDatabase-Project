@@ -163,8 +163,6 @@ public class AdminController implements Initializable {
 			// sql query to delete data from the database
 			String sqlRemove = "DELETE FROM students WHERE id = ?";
 			
-			// open a connection to the database and use PreparedStatement to 
-			// initialize the query.
 			Connection conn = dbConnection.getConnection();
 			PreparedStatement delete = conn.prepareStatement(sqlRemove);
 

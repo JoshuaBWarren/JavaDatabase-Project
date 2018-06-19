@@ -158,23 +158,24 @@ public class AdminController implements Initializable {
 	@FXML
 	private void removeStudent(ActionEvent event) {
 		
+		//int initial = studenttable.getSelectionModel().getSelectedIndex();
+		//String result = String.valueOf(initial);
+
+
+		//System.out.println(initial);
+		//System.out.println(student.getID().toString());
 		try {
 			
 			// sql query to delete data from the database
 			String sqlRemove = "DELETE FROM students WHERE id = ?";
 			
-			// open a connection to the database and use PreparedStatement to 
-			// initialize the query.
 			Connection conn = dbConnection.getConnection();
 			PreparedStatement delete = conn.prepareStatement(sqlRemove);
 
-			// information needed to delete the row
+			
 			delete.setString(1, selectStudent());
 			
-			// execute and delete
 			delete.executeUpdate();
-			
-			// close the connection
 			conn.close();
 			
 		} catch (SQLException ex) {
