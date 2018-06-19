@@ -1,0 +1,19 @@
+package students;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class ClassData {
+	
+	private StringProperty classID;
+	private StringProperty className;
+	private StringProperty semester;
+	
+	public ClassData(String classID, String className, String semester) {
+		
+		this.classID = new SimpleStringProperty(classID);
+		this.className = new SimpleStringProperty(className);
+		this.semester = new SimpleStringProperty(semester);
+	}
+
+}

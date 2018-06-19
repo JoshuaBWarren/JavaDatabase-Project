@@ -1,0 +1,76 @@
+package Admin;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class ClassData {
+	
+	private StringProperty classID;
+	private StringProperty className;
+	private StringProperty semester;
+	private StringProperty year;
+	
+	public ClassData(String classID, String className, String semester, String year) {
+		
+		this.classID = new SimpleStringProperty(classID);
+		this.className = new SimpleStringProperty(className);
+		this.semester = new SimpleStringProperty(semester);
+		this.year = new SimpleStringProperty(year);
+	}
+
+	/*
+	 * Getter and Setter methods
+	 */
+	public StringProperty getClassID() {
+		return classID;
+	}
+
+	public StringProperty getClassName() {
+		return className;
+	}
+
+	public StringProperty getSemester() {
+		return semester;
+	}
+	
+	public StringProperty getYear() {
+		return year;
+	}
+
+	public void setClassID(StringProperty classID) {
+		this.classID = classID;
+	}
+
+	public void setClassName(StringProperty className) {
+		this.className = className;
+	}
+
+	public void setSemester(StringProperty semester) {
+		this.semester = semester;
+	}
+	
+	public void setYear(StringProperty year) {
+		this.year = year;
+	}
+	
+	
+	public StringProperty classIDProperty() {
+		return classID;
+	}
+	
+	public StringProperty classNameProperty() {
+		return className;
+	}
+	
+	public StringProperty semesterProperty() {
+		return semester;
+	}
+	
+	public StringProperty yearProperty() {
+		return year;
+	}
+	
+
+	
+
+}

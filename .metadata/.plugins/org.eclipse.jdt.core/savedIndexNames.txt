@@ -18,5 +18,4 @@ INDEX VERSION 1.130+C:\Users\warre\Documents\GitHub\JavaDatabase Project\.metada
 2872033403.index
 1204375214.index
 533691649.index
-4238211608.index
 1177904427.index

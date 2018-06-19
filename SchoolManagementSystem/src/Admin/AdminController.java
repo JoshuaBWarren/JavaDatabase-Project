@@ -1,33 +1,29 @@
 package Admin;
 
-import java.beans.Statement;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import dbUtil.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+import students.ClassData;
 
 public class AdminController implements Initializable {
 
 	/*
-	 * all of the fields within Admin.fxml
+	 * all the fields for Students
 	 */
 	@FXML
 	private TextField id;
@@ -39,10 +35,8 @@ public class AdminController implements Initializable {
 	private TextField email;
 	@FXML
 	private DatePicker dob;
-	
 	@FXML
 	private TableView<StudentData> studenttable;
-	
 	@FXML
 	private TableColumn<StudentData, String> idcolumn;
 	@FXML
@@ -54,25 +48,55 @@ public class AdminController implements Initializable {
 	@FXML
 	private TableColumn<StudentData, String> dobcolumn;
 	
+	
+	
+	/*
+	 * all the fields for Classes
+	 */
+	@FXML
+	private TextField classid;
+	@FXML
+	private TextField classname;
+	@FXML
+	private TextField semester;
+	@FXML
+	private TextField year;
+	@FXML
+	private TableView<ClassData> classtable;
+	@FXML
+	private TableColumn<ClassData, String> classidcolumn;
+	@FXML
+	private TableColumn<ClassData, String> classnamecolumn;
+	@FXML
+	private TableColumn<ClassData, String> semestercolumn;
+	@FXML
+	private TableColumn<ClassData, String> yearcolumn;
+	
+	
+	
+	
 	// create instance of the connection from dbConnection
 	private dbConnection dc;
 	
-	//private String rowID = id.getOnMouseClicked().toString();
-	
+	// create access to data and classdata
 	private ObservableList<StudentData> data;
-	private Button bt;
-	private String valueToDelete;
+	private ObservableList<ClassData> classData;
 	
-	// buttons
+	/*
+	 * Query commands for the two databases Admin's will use
+	 */
+	private String sqlStudents = "SELECT * FROM students";
+	private String sqlClasses = "Select * FROM classes";
 	
-	
-	private String sql = "SELECT * FROM students";
-	
+	// initialize connection to the database
 	public void initialize(URL url, ResourceBundle rb) {
 		
 		this.dc = new dbConnection();
 	}
 	
+	/*
+	 * load all of the students attending school
+	 */
 	@FXML
 	private void loadStudentData(ActionEvent event) {
 		
@@ -84,7 +108,7 @@ public class AdminController implements Initializable {
 			this.data = FXCollections.observableArrayList();
 			
 			// execute our query
-			ResultSet rs = conn.createStatement().executeQuery(sql);
+			ResultSet rs = conn.createStatement().executeQuery(sqlStudents);
 			
 			// while we have more table data
 			while(rs.next()) {
@@ -113,7 +137,51 @@ public class AdminController implements Initializable {
 		
 	}
 	
-	// add data to the database
+	/*
+	 * Load data of all the classes students can take
+	 */
+	@FXML
+	private void loadClassData(ActionEvent event) {
+		
+		try {
+			
+			// get connection
+			Connection conn = dbConnection.getConnection();
+			
+			this.classData = FXCollections.observableArrayList();
+			
+			// execute our query
+			ResultSet rs = conn.createStatement().executeQuery(sqlClasses);
+			
+			// while we have more table data
+			while(rs.next()) {
+				
+				// add the data to each column
+				this.classData.add(new ClassData(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+				
+			}
+			
+			conn.close();
+			
+		} catch (SQLException ex) {
+			
+			System.err.println("Error" + ex);
+		}
+		
+		//display data to the tables
+		this.classidcolumn.setCellValueFactory(new PropertyValueFactory<ClassData, String>("classID"));
+		this.classnamecolumn.setCellValueFactory(new PropertyValueFactory<ClassData, String>("className"));
+		this.semestercolumn.setCellValueFactory(new PropertyValueFactory<ClassData, String>("semester"));
+		this.yearcolumn.setCellValueFactory(new PropertyValueFactory<ClassData, String>("year"));
+		
+		this.classtable.setItems(null);
+		this.classtable.setItems(this.classData);
+		
+	}
+
+	/*
+	 * Admins can add students to the school
+	 */
 	@FXML
 	private void addStudent(ActionEvent event) {
 		
@@ -137,17 +205,54 @@ public class AdminController implements Initializable {
 			
 		} catch(SQLException ex) {
 			ex.printStackTrace();
+	
+		}
+		// update the table after adding and clear fields
+		loadStudentData(event);
+		clearStudentFields(event);
+		
+	}
+	
+	/*
+	 * Admins can add classes
+	 */
+	@FXML
+	private void addClass(ActionEvent event) {
+		
+		// sql query to insert data into classes
+		String sqlInsert = "INSERT INTO classes(classid,classname,semester,year) VALUES (?,?,?,?)";
+		
+		try {
+			
+			Connection conn = dbConnection.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sqlInsert);
+			
+			// add the data in the right column
+			stmt.setString(1, this.classid.getText());
+			stmt.setString(2, this.classname.getText());
+			stmt.setString(3, this.semester.getText());
+			stmt.setString(4, this.year.getText());
+			
+			stmt.execute();
+			conn.close();
+			
+		} catch(SQLException ex) {
+			ex.printStackTrace();
 		}
 		
 		// update the table after adding and clear fields
-		loadStudentData(event);
-		clearFields(event);
+		loadClassData(event);
+		clearClassFields(event);
 
 	}
 	
-	// clear the form
+	
+	/*
+	 * This class clears the TextFields of any text that may remain
+	 * after hitting a button.
+	 */
 	@FXML
-	private void clearFields(ActionEvent event) {
+	private void clearStudentFields(ActionEvent event) {
 		this.id.setText("");
 		this.firstname.setText("");
 		this.lastname.setText("");
@@ -155,6 +260,20 @@ public class AdminController implements Initializable {
 		this.dob.setValue(null);
 	}
 	
+	/*
+	 * Clear class fields
+	 */
+	@FXML
+	private void clearClassFields(ActionEvent event) {
+	this.classid.setText("");
+	this.classname.setText("");
+	this.semester.setText("");
+	this.year.setText("");
+	}
+	
+	/*
+	 * Remove students
+	 */
 	@FXML
 	private void removeStudent(ActionEvent event) {
 		
@@ -228,8 +347,83 @@ public class AdminController implements Initializable {
 		
 		// return the row to delete
 		return result;
+	}
 	
+	/*
+	 * Admins can delete classes
+	 */
+	@FXML
+	private void removeClass(ActionEvent event) {
+		
+		try {
+			
+			// sql query to delete data from the database
+			String sqlRemove = "DELETE FROM classes WHERE id = ?";
+			
+			// open a connection to the database and use PreparedStatement to 
+			// initialize the query.
+			Connection conn = dbConnection.getConnection();
+			PreparedStatement delete = conn.prepareStatement(sqlRemove);
 
+			// information needed to delete the row
+			delete.setString(1, selectClass());
+			
+			// execute and delete
+			delete.executeUpdate();
+			
+			// close the connection
+			conn.close();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+		// update table after deleting
+		loadClassData(event);
+		
+	}
+	
+private String selectClass() {
+		
+		// initial value for result to return
+		String result = "";
+		
+		// grab the index of the row selected on the table
+		int initial = classtable.getSelectionModel().getSelectedIndex();
 
+		try {
+
+			// SELECT query to execute
+			String sqlSelect = "SELECT id FROM classes";
+
+			Connection conn = dbConnection.getConnection();
+			ResultSet rs = conn.createStatement().executeQuery(sqlSelect);
+
+			// while there's a next row
+			while(rs.next()) {
+
+				// set temp to equal the id rs.next() is currently on
+				String temp = rs.getString("classid");
+				// get the row id - 1 since we start at 0
+				int temp1 = rs.getRow() - 1;
+				
+				// if temp1 is equal to the index we selected
+				if(temp1 == initial) {
+					
+					// make it equal to result
+					result = temp;
+				}
+			}
+
+			// close the connection
+			conn.close();
+			
+		} catch (SQLException ex) {
+			
+			ex.printStackTrace();
+		}
+		
+		// return the row to delete
+		return result;
 	}
 }
