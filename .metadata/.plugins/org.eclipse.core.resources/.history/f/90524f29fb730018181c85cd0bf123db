@@ -247,10 +247,10 @@ public class AdminController implements Initializable {
 
 	/*
 	 * Signature
-	 * addStudent : ActionEvent -> Database
+	 * addStudent : ActionEvent -> Student
 	 * Purpose
 	 * GIVEN: an action event (from clicking Add Student)
-	 * RETURNS: an updated database with a new student added
+	 * RETURNS: a new Student added to the database
 	 */
 	@FXML
 	private void addStudent(ActionEvent event) {
@@ -285,10 +285,10 @@ public class AdminController implements Initializable {
 	
 	/*
 	 * Signature
-	 * addClass : ActionEvent -> Database
+	 * addClass : ActionEvent -> Class
 	 * Purpose
 	 * GIVEN: an action event (from clicking Add Class)
-	 * RETURNS: an updated database with a new class added
+	 * RETURNS: a new Class added to the database
 	 */
 	@FXML
 	private void addClass(ActionEvent event) {
@@ -353,11 +353,7 @@ public class AdminController implements Initializable {
 	}
 	
 	/*
-	 * Signature
-	 * removeStudent : ActionEvent -> Database
-	 * Purpose
-	 * GIVEN: an action event (from clicking Delete Student)
-	 * RETURNS: an updated database with a student removed
+	 * Remove students
 	 */
 	@FXML
 	private void removeStudent(ActionEvent event) {
@@ -390,13 +386,6 @@ public class AdminController implements Initializable {
 		
 	}
 	
-	/*
-	 * Signature
-	 * selectStudent : Integer -> String
-	 * Purpose
-	 * GIVEN: an Integer Index from the database table
-	 * RETURNS: a String representation of the row selected 
-	 */
 	private String selectStudent() {
 		
 		// initial value for result to return
@@ -442,11 +431,7 @@ public class AdminController implements Initializable {
 	}
 	
 	/*
-	 * Signature
-	 * removeClass : ActionEvent -> Database
-	 * Purpose
-	 * GIVEN: an action event (from clicking Delete Student)
-	 * RETURNS: an updated database with a class removed
+	 * Admins can delete classes
 	 */
 	@FXML
 	private void removeClass(ActionEvent event) {
@@ -479,14 +464,7 @@ public class AdminController implements Initializable {
 		
 	}
 	
-	/*
-	 * Signature
-	 * selectClass : Integer -> String
-	 * Purpose
-	 * GIVEN: an Integer Index from the database table
-	 * RETURNS: a String representation of the row selected 
-	 */
-	private String selectClass() {
+private String selectClass() {
 		
 		// initial value for result to return
 		String result = "";

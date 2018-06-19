@@ -481,7 +481,7 @@ public class AdminController implements Initializable {
 	
 	/*
 	 * Signature
-	 * selectClass : Integer -> String
+	 * selectStudent : Integer -> String
 	 * Purpose
 	 * GIVEN: an Integer Index from the database table
 	 * RETURNS: a String representation of the row selected 

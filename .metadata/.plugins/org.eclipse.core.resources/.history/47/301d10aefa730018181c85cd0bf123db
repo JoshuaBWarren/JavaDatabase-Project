@@ -94,28 +94,7 @@ public class AdminController implements Initializable {
 	@FXML
 	private TableColumn<ClassData, String> yearcolumn; // represents the TableColumn of Admin.fxml document with fx:id of yearcolumn
 	
-	/*
-	 * A StudentData is a Student
-	 * Deconstructor
-	 * student-fn: Student -> ???
-	 * (define (student-fn student)
-	 * ... (StringProperty ID) ...
-	 * ... (StringProperty firstName) ...
-	 * ... (StringProperty lastName) ...
-	 * ... (StringProperty email) ...
-	 * ... (StringProperty DOB) ...
-	 */
 	
-	/*
-	 * A ClassData is a Class
-	 * Deconstructor
-	 * class-fn: Class -> ???
-	 * (define (class-fn class)
-	 * ... (StringProperty classID) ...
-	 * ... (StringProperty className) ...
-	 * ... (StringProperty semester) ...
-	 * ... (StringProperty year) ...
-	 */
 	
 	
 	/*
@@ -247,10 +226,10 @@ public class AdminController implements Initializable {
 
 	/*
 	 * Signature
-	 * addStudent : ActionEvent -> Database
+	 * addStudent : ActionEvent -> Student
 	 * Purpose
 	 * GIVEN: an action event (from clicking Add Student)
-	 * RETURNS: an updated database with a new student added
+	 * RETURNS: a new Student added to the database
 	 */
 	@FXML
 	private void addStudent(ActionEvent event) {
@@ -284,11 +263,7 @@ public class AdminController implements Initializable {
 	}
 	
 	/*
-	 * Signature
-	 * addClass : ActionEvent -> Database
-	 * Purpose
-	 * GIVEN: an action event (from clicking Add Class)
-	 * RETURNS: an updated database with a new class added
+	 * Admins can add classes
 	 */
 	@FXML
 	private void addClass(ActionEvent event) {
@@ -322,11 +297,8 @@ public class AdminController implements Initializable {
 	
 	
 	/*
-	 * Signature
-	 * clearStudentFields : ActionEvent -> empty
-	 * Purpose
-	 * GIVEN: an action event (from clicking Clear Form)
-	 * RETURNS: an empty form
+	 * This class clears the TextFields of any text that may remain
+	 * after hitting a button.
 	 */
 	@FXML
 	private void clearStudentFields(ActionEvent event) {
@@ -338,11 +310,7 @@ public class AdminController implements Initializable {
 	}
 	
 	/*
-	 * Signature
-	 * clearClassFields : ActionEvent -> empty
-	 * Purpose
-	 * GIVEN: an action event (from clicking Clear Form)
-	 * RETURNS: an empty form
+	 * Clear class fields
 	 */
 	@FXML
 	private void clearClassFields(ActionEvent event) {
@@ -353,11 +321,7 @@ public class AdminController implements Initializable {
 	}
 	
 	/*
-	 * Signature
-	 * removeStudent : ActionEvent -> Database
-	 * Purpose
-	 * GIVEN: an action event (from clicking Delete Student)
-	 * RETURNS: an updated database with a student removed
+	 * Remove students
 	 */
 	@FXML
 	private void removeStudent(ActionEvent event) {
@@ -390,13 +354,6 @@ public class AdminController implements Initializable {
 		
 	}
 	
-	/*
-	 * Signature
-	 * selectStudent : Integer -> String
-	 * Purpose
-	 * GIVEN: an Integer Index from the database table
-	 * RETURNS: a String representation of the row selected 
-	 */
 	private String selectStudent() {
 		
 		// initial value for result to return
@@ -442,11 +399,7 @@ public class AdminController implements Initializable {
 	}
 	
 	/*
-	 * Signature
-	 * removeClass : ActionEvent -> Database
-	 * Purpose
-	 * GIVEN: an action event (from clicking Delete Student)
-	 * RETURNS: an updated database with a class removed
+	 * Admins can delete classes
 	 */
 	@FXML
 	private void removeClass(ActionEvent event) {
@@ -479,14 +432,7 @@ public class AdminController implements Initializable {
 		
 	}
 	
-	/*
-	 * Signature
-	 * selectClass : Integer -> String
-	 * Purpose
-	 * GIVEN: an Integer Index from the database table
-	 * RETURNS: a String representation of the row selected 
-	 */
-	private String selectClass() {
+private String selectClass() {
 		
 		// initial value for result to return
 		String result = "";

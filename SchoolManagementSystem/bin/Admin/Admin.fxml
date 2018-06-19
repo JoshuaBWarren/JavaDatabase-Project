@@ -69,7 +69,7 @@
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
                               </DatePicker>
-                              <Button mnemonicParsing="false" onAction="#addStudent" prefHeight="25.0" prefWidth="422.0" text="Add Entry">
+                              <Button mnemonicParsing="false" onAction="#addStudent" prefHeight="25.0" prefWidth="422.0" text="Add Student">
                                  <VBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
