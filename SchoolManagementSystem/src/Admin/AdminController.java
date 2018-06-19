@@ -20,6 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import students.ClassData;
 
+/*
+ * Class representing an AdminController
+ */
 public class AdminController implements Initializable {
 	
 	/*
@@ -451,10 +454,12 @@ public class AdminController implements Initializable {
 	@FXML
 	private void removeClass(ActionEvent event) {
 		
+		
+		
 		try {
 			
 			// sql query to delete data from the database
-			String sqlRemove = "DELETE FROM classes WHERE id = ?";
+			String sqlRemove = "DELETE FROM classes WHERE classid = ?";
 			
 			// open a connection to the database and use PreparedStatement to 
 			// initialize the query.
@@ -487,7 +492,7 @@ public class AdminController implements Initializable {
 	 * RETURNS: a String representation of the row selected 
 	 */
 	private String selectClass() {
-		
+
 		// initial value for result to return
 		String result = "";
 		
@@ -497,7 +502,7 @@ public class AdminController implements Initializable {
 		try {
 
 			// SELECT query to execute
-			String sqlSelect = "SELECT id FROM classes";
+			String sqlSelect = "SELECT classid FROM classes";
 
 			Connection conn = dbConnection.getConnection();
 			ResultSet rs = conn.createStatement().executeQuery(sqlSelect);

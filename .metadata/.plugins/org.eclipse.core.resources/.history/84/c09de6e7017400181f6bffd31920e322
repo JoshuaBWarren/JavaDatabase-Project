@@ -1,0 +1,194 @@
+package loginapp;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import Admin.AdminController;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import students.StudentsController;
+import javafx.event.*;
+
+/*
+ * Class representing a LoginController
+ */
+public class LoginController implements Initializable {
+	
+	// create instance of LoginModel
+	LoginModel loginModel = new LoginModel();
+
+	/*
+	 * A Label is a Label
+	 * INTERP: represents the location in which data is displayed
+	 */
+	@FXML
+	private Label dbstatus; // represents the Label of login.fxml document with fx:id of dbstatus
+	
+	/*
+	 * A TextField is a TextField
+	 * INTERP: represents the location in which data is taken as input
+	 */
+	@FXML
+	private TextField username; // represents the TextField of login.fxml document with fx:id of username
+	
+	/*
+	 * A PaswordField is a PasswordField
+	 * INTERP: represents the location in which a String is taken as input
+	 */
+	@FXML
+	private PasswordField password; // represents the PasswordField of login.fxml document with fx:id of password
+	
+	/*
+	 * A ComboBox<option> is a ComboBox
+	 * INTERP: represents the drop down of information from option.java 
+	 */
+	@FXML
+	private ComboBox<option> combobox; // represents the ComboBox of login.fxml document with fx:id of combobox
+	
+	/*
+	 * A Button is a Button
+	 * INTERP: represents a button that will perform an action.
+	 */
+	@FXML
+	private Button loginButton; // represents the Button of login.fxml document with fx:id of login
+	
+	@FXML
+	private Label loginStatus; // represents the Label of login.fxml document with fx:id of loginStatus
+	
+	/*
+	 * Signature
+	 * initialize : URL ResourceBundle -> Connection
+	 * Purpose
+	 * GIVEN: a url and locale sensitive texts/components
+	 * RETURNS: a Connection to a specific database
+	 */
+	public void initialize(URL url, ResourceBundle rb) {
+		
+		// check if we're connected
+		if(this.loginModel.isDatabaseConnected()) {
+			
+			// if so, display "Connected"
+			this.dbstatus.setText("Connected");
+		} else {
+			
+			// if not, then display not connected
+			this.dbstatus.setText("Not Connected");
+		}
+		
+		// set options from the enum
+		this.combobox.setItems(FXCollections.observableArrayList(option.values()));
+		
+	}
+	
+	/*
+	 * Signature
+	 * Login : ActionEvent -> ???
+	 * Purpose
+	 * GIVEN: an action event (from clicking Login)
+	 * RETURNS: one of - adminLogin() or studentLogin()
+	 */
+	@FXML
+	public void Login(ActionEvent event) {
+		
+		try {
+			// check login information
+			if(this.loginModel.isLogin(this.username.getText(), this.password.getText(), ((option)this.combobox.getValue()).toString())) {
+				
+				Stage stage = (Stage)this.loginButton.getScene().getWindow();
+				stage.close();
+				
+				switch(((option) this.combobox.getValue()).toString()) 
+				{
+					case "Admin":
+						adminLogin();
+						break;
+					case "Student":
+						studentLogin();
+						break;
+				} 
+			}
+			else {
+				this.loginStatus.setText("Wrong!");
+			}	
+			
+		} catch(Exception localException) {
+			
+			
+		}
+	}
+	
+	
+	/*
+	 * Signature
+	 * studentLogin : TextField PasswordField -> Stage
+	 * Purpose
+	 * GIVEN: A TextField for username and a PasswordField for password
+	 * RETURNS: the Stage for students.fxml
+	 */
+	public void studentLogin() {
+		
+		try {
+			Stage userStage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			
+			// create new root and find FXML file
+			Pane root = (Pane) loader.load(getClass().getResource("/students/studentFXML.fxml").openStream());
+			
+			StudentsController studentController = (StudentsController) loader.getController();
+			
+			Scene scene = new Scene(root);
+			
+			userStage.setScene(scene);
+			userStage.setTitle("Student Dashboard");
+			
+			// prevent students from resizing
+			userStage.setResizable(false);
+			userStage.show();
+			
+			
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	// login method for the admin
+	public void adminLogin() {
+		
+		try {
+			Stage adminStage = new Stage();
+			FXMLLoader adminLoader = new FXMLLoader();
+			
+			// create new admin root and find the FXML file
+			Pane adminRoot = (Pane) adminLoader.load(getClass().getResource("/Admin/Admin.fxml").openStream());
+			
+			AdminController adminController = (AdminController) adminLoader.getController();
+			
+			Scene scene = new Scene(adminRoot);
+			
+			adminStage.setScene(scene);
+			adminStage.setTitle("Admin Dashboard");
+			
+			adminStage.setResizable(false);
+			adminStage.show();
+			
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	
+	
+}

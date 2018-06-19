@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /*
- * This class will connect to my database
+ * Class for attaining a connection to the database
  */
 public class dbConnection {
 
@@ -14,12 +14,18 @@ public class dbConnection {
 	//private static final String PASSWORD = "dbpassword";
 	//private static final String CONN = "jbdc:mysql://localhost/login";
 	
-	// this is all we need for SQLITE
+	/*
+	 * A SQCONN is a String
+	 * INTERP: represents the Query command to access the database
+	 */
 	private static final String SQCONN = "jdbc:sqlite:schoolsystem.sqlite";
 	
 	/*
-	 * This is the class that will help with the
-	 * connection to the Database.
+	 * Signature
+	 * Connection : URL String -> Connection
+	 * Purpose
+	 * GIVEN: a URL to the database and a String query command
+	 * RETURNS: a Connection to the specified database
 	 */
 	public static Connection getConnection() throws SQLException {
 		

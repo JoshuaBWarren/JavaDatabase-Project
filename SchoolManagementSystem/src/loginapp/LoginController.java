@@ -22,26 +22,59 @@ import javafx.stage.Stage;
 import students.StudentsController;
 import javafx.event.*;
 
+/*
+ * Class representing a LoginController
+ */
 public class LoginController implements Initializable {
 	
 	// create instance of LoginModel
 	LoginModel loginModel = new LoginModel();
 
-	// labels and buttons in the login page
+	/*
+	 * A Label is a Label
+	 * INTERP: represents the location in which data is displayed
+	 */
 	@FXML
-	private Label dbstatus;
-	@FXML
-	private TextField username;
-	@FXML
-	private PasswordField password;
-	@FXML
-	private ComboBox<option> combobox;
-	@FXML
-	private Button loginButton;
-	@FXML
-	private Label loginStatus;
+	private Label dbstatus; // represents the Label of login.fxml document with fx:id of dbstatus
 	
-	// initialize connection to database
+	/*
+	 * A TextField is a TextField
+	 * INTERP: represents the location in which data is taken as input
+	 */
+	@FXML
+	private TextField username; // represents the TextField of login.fxml document with fx:id of username
+	
+	/*
+	 * A PaswordField is a PasswordField
+	 * INTERP: represents the location in which a String is taken as input
+	 */
+	@FXML
+	private PasswordField password; // represents the PasswordField of login.fxml document with fx:id of password
+	
+	/*
+	 * A ComboBox<option> is a ComboBox
+	 * INTERP: represents the drop down of information from option.java 
+	 */
+	@FXML
+	private ComboBox<option> combobox; // represents the ComboBox of login.fxml document with fx:id of combobox
+	
+	/*
+	 * A Button is a Button
+	 * INTERP: represents a button that will perform an action.
+	 */
+	@FXML
+	private Button loginButton; // represents the Button of login.fxml document with fx:id of login
+	
+	@FXML
+	private Label loginStatus; // represents the Label of login.fxml document with fx:id of loginStatus
+	
+	/*
+	 * Signature
+	 * initialize : URL ResourceBundle -> Connection
+	 * Purpose
+	 * GIVEN: a url and locale sensitive texts/components
+	 * RETURNS: a Connection to a specific database
+	 */
 	public void initialize(URL url, ResourceBundle rb) {
 		
 		// check if we're connected
@@ -60,7 +93,13 @@ public class LoginController implements Initializable {
 		
 	}
 	
-	// login function
+	/*
+	 * Signature
+	 * Login : ActionEvent -> ???
+	 * Purpose
+	 * GIVEN: an action event (from clicking Login)
+	 * RETURNS: one of - adminLogin() or studentLogin()
+	 */
 	@FXML
 	public void Login(ActionEvent event) {
 		
@@ -92,7 +131,13 @@ public class LoginController implements Initializable {
 	}
 	
 	
-	// login method for student
+	/*
+	 * Signature
+	 * studentLogin : TextField PasswordField -> Stage
+	 * Purpose
+	 * GIVEN: A TextField for username and a PasswordField for password
+	 * RETURNS: the Stage for students.fxml
+	 */
 	public void studentLogin() {
 		
 		try {
@@ -100,7 +145,7 @@ public class LoginController implements Initializable {
 			FXMLLoader loader = new FXMLLoader();
 			
 			// create new root and find FXML file
-			Pane root = (Pane) loader.load(getClass().getResource("/students/studentFXML.fxml").openStream());
+			Pane root = (Pane) loader.load(getClass().getResource("/students/students.fxml").openStream());
 			
 			StudentsController studentController = (StudentsController) loader.getController();
 			
@@ -119,7 +164,13 @@ public class LoginController implements Initializable {
 		}
 	}
 	
-	// login method for the admin
+	/*
+	 * Signature
+	 * adminLogin : TextField PasswordField -> Stage
+	 * Purpose
+	 * GIVEN: A TextField for username and a PasswordField for password
+	 * RETURNS: the Stage for Admin.fxml
+	 */
 	public void adminLogin() {
 		
 		try {

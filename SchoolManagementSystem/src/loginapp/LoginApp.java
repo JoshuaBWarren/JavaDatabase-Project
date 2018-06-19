@@ -7,24 +7,42 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /*
- * Main class of the project
+ * Represents the LoginApp class
  */
 public class LoginApp extends Application {
 
+	/*
+	 * Signature
+	 * start : Stage Parent Scene -> Stage
+	 * Purpose
+	 * GIVEN: a Stage platform, a Parent with children, and a scene containing
+	 *        content to show
+	 * RETURNS: An updated Stage
+	 */
 	public void start(Stage stage) throws Exception{
 		
-		// the root node
+		/*
+		 * A root is a Parent
+		 * INTERP: represents an object hierarchy with children
+		 */
 		Parent root = (Parent) FXMLLoader.load(getClass().getResource("login.fxml"));
 		
-		// scene object
+		/*
+		 * A scene is a Scene
+		 * INTERP: represents a graph containing content
+		 */
 		Scene scene = new Scene(root);
 		
-		// set the scene for stage
 		stage.setScene(scene);
 		stage.setTitle("School Management System");
 		stage.show();
 	}
 	
+	/*
+	 * Method that launches the application
+	 * 
+	 * @returns an application
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

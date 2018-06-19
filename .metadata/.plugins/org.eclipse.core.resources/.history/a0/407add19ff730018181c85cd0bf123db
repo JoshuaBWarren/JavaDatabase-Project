@@ -1,0 +1,142 @@
+package students;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+/*
+ * Class representing a class
+ */
+public class ClassData {
+	
+	private StringProperty classID;
+	private StringProperty className;
+	private StringProperty semester;
+	private StringProperty year;
+	
+	/*
+	 * Constructor for class ClassData
+	 */
+	public ClassData(String classID, String className, String semester, String year) {
+		
+		this.classID = new SimpleStringProperty(classID);
+		this.className = new SimpleStringProperty(className);
+		this.semester = new SimpleStringProperty(semester);
+		this.year = new SimpleStringProperty(year);
+	}
+
+	/*
+	 * Getter property for classID.
+	 * 
+	 * @return classID
+	 */
+	public StringProperty getClassID() {
+		return classID;
+	}
+
+	/*
+	 * Getter property for classID.
+	 * 
+	 * @return classID
+	 */
+	public StringProperty getClassName() {
+		return className;
+	}
+
+	/*
+	 * Getter property for classID.
+	 * 
+	 * @return classID
+	 */
+	public StringProperty getSemester() {
+		return semester;
+	}
+	
+	/*
+	 * Getter property for classID.
+	 * 
+	 * @return classID
+	 */
+	public StringProperty getYear() {
+		return year;
+	}
+
+	/*
+	 * Setter property for ID
+	 * 
+	 * @param ID represents the property to change.
+	 */
+	public void setClassID(StringProperty classID) {
+		this.classID = classID;
+	}
+
+	/*
+	 * Setter property for ID
+	 * 
+	 * @param ID represents the property to change.
+	 */
+	public void setClassName(StringProperty className) {
+		this.className = className;
+	}
+
+	/*
+	 * Setter property for ID
+	 * 
+	 * @param ID represents the property to change.
+	 */
+	public void setSemester(StringProperty semester) {
+		this.semester = semester;
+	}
+	
+	/*
+	 * Setter property for ID
+	 * 
+	 * @param ID represents the property to change.
+	 */
+	public void setYear(StringProperty year) {
+		this.year = year;
+	}
+	
+	/*
+	 * Method for getting the ID for
+	 * the idcolumn.
+	 * 
+	 * @return the ID
+	 */
+	public StringProperty classIDProperty() {
+		return classID;
+	}
+	
+	/*
+	 * Method for getting the ID for
+	 * the idcolumn.
+	 * 
+	 * @return the ID
+	 */
+	public StringProperty classNameProperty() {
+		return className;
+	}
+	
+	/*
+	 * Method for getting the ID for
+	 * the idcolumn.
+	 * 
+	 * @return the ID
+	 */
+	public StringProperty semesterProperty() {
+		return semester;
+	}
+	
+	/*
+	 * Method for getting the ID for
+	 * the idcolumn.
+	 * 
+	 * @return the ID
+	 */
+	public StringProperty yearProperty() {
+		return year;
+	}
+	
+
+	
+
+}
