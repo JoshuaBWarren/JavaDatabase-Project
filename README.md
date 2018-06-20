@@ -8,3 +8,5 @@ a Student can log in.
 
 Once logged in, an Admin can add or remove students from the "school" and
 Students can add or remove classes from their Schedule.  
+
+Language used is Java
